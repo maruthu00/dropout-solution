@@ -1,12 +1,34 @@
-# React + Vite
+# 🎓 Dropout Prediction & Counseling System (EduGuard)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+An AI + ML powered web platform that predicts student dropouts early and provides personalized counseling support.  
+Built for **Smart India Hackathon 2025** by Team **Technomates**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Features
+- 📊 **Student Dashboard** → shows attendance, fees status, semester results.
+- 🧑‍🏫 **Mentor Dashboard** → highlights high-risk students with performance trends.
+- 🏫 **Admin Dashboard** → manage users, view analytics, schedule counseling.
+- 🔔 **Automated Alerts** → notifies mentors & parents when a student is at risk.
+- 🤝 **Counseling Module** → academic, personal, and career guidance.
+- 🌐 **Responsive Design** → mobile + web ready.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ Tech Stack
+- **Frontend:** React.js, Tailwind CSS
+- **Backend:** Node.js / Express.js
+- **Database:** MongoDB
+- **Auth:** JWT-based authentication
+- **ML/Logic:** Rule-based thresholds + predictive model
+
+---
+
+## ⚙️ Installation & Setup
+
+1. Clone the repo:
+   ```bash
+   git clone https://github.com/username/dropout-solution.git
+   cd dropout-solution
+2. npm install
+3. npm run dev
