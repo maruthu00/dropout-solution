@@ -1,5 +1,78 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { FaBrain, FaShieldAlt, FaUsers } from 'react-icons/fa';
+
+//Data for feature cards
+const featuresData = [
+  {
+    icon: <FaBrain size={28} />,
+    gradient: 'from-blue-500 to-cyan-400',
+    title: 'AI-Powered Predictions',
+    description: 'Advanced machine learning algorithms analyze multiple data points to predict dropout risk with high accuracy.',
+  },
+  {
+    icon: <FaShieldAlt size={28} />,
+    gradient: 'from-emerald-500 to-green-400',
+    title: 'Early Intervention',
+    description: 'Identify at-risk students early and implement targeted support strategies before it’s too late.',
+  },
+  {
+    icon: <FaUsers size={28} />,
+    gradient: 'from-indigo-500 to-sky-500',
+    title: 'Collaborative Support',
+    description: 'Connect mentors, counselors, and administrators in a unified platform for student success.',
+  },
+];
+
+const FeatureCard = ({ icon, gradient, title, description }) => {
+  return (
+    <div className="bg-white p-8 rounded-2xl shadow-lg flex flex-col transition-transform transform hover:-translate-y-2 hover:shadow-xl duration-300">
+      {/* Icon with Gradient Background */}
+      <div className={`w-14 h-14 rounded-xl mb-6 flex items-center justify-center text-white bg-gradient-to-br ${gradient}`}>
+        {icon}
+      </div>
+      
+      {/* Card Title */}
+      <h3 className="text-xl font-bold text-gray-800 mb-3">{title}</h3>
+      
+      {/* Card Description */}
+      <p className="text-gray-600 leading-relaxed">{description}</p>
+    </div>
+  );
+};
+
+const FeaturesSection = () => {
+  return (
+    <section className="bg-gray-50 py-20 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="text-center">
+          <h2 className="text-4xl font-extrabold text-gray-900 sm:text-5xl">
+            Transforming Education with AI
+          </h2>
+          <p className="mt-4 max-w-2xl mx-auto text-xl text-gray-500">
+            Our comprehensive platform combines cutting-edge technology with educational expertise to ensure no student falls through the cracks.
+          </p>
+        </div>
+
+        {/* Features Grid */}
+        <div className="mt-16 grid gap-10 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+          {featuresData.map((feature, index) => (
+            <FeatureCard
+              key={index}
+              icon={feature.icon}
+              gradient={feature.gradient}
+              title={feature.title}
+              description={feature.description}
+            />
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
 
 // --- SVG Icon Components ---
 const StudentIcon = () => (
@@ -202,7 +275,7 @@ function Home() {
 
       {/* How It Works Section */}
       <HowItWorksSection />
-
+        <FeaturesSection />
       {/* You can add more sections here */}
       {/* For example: <TestimonialsSection /> etc. */}
     </div>
