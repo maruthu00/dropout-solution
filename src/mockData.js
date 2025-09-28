@@ -137,3 +137,33 @@ export const studentsData = [
     feesPaid: false,
   },
 ];
+
+export const adminsData = [
+  {
+    id: 1,
+    name: "Super Admin",
+    email: "admin@site.com",
+    password: "admin123",
+  },
+  {
+    id: 2,
+    name: "College Admin",
+    email: "collegeadmin@site.com",
+    password: "college123",
+  },
+];
+
+export const mentorsData = [
+  {
+    id: 1,
+    name: "John Mentor",
+    email: "john@mentor.com",
+    password: "mentor123",
+  },
+  {
+    id: 2,
+    name: "Priya Mentor",
+    email: "priya@mentor.com",
+    password: "mentor456",
+  },
+];

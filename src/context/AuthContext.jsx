@@ -1,5 +1,5 @@
 import { createContext, useState, useContext } from "react";
-import { studentsData } from "../mockData";
+import { studentsData, adminsData, mentorsData } from "../mockData"; // 👈 add separate mock data
 
 const AuthContext = createContext();
 
@@ -12,15 +12,35 @@ export const AuthProvider = ({ children }) => {
         (s) => s.email === email && s.password === password
       );
       if (student) {
-        setUser({ role, student }); // ✅ Save full student object
+        setUser({ role, ...student }); // save full student details
         return true;
       }
       return false;
     }
 
-    // For Admin & Mentor (dummy login)
-    setUser({ role });
-    return true;
+    if (role === "Admin") {
+      const admin = adminsData.find(
+        (a) => a.email === email && a.password === password
+      );
+      if (admin) {
+        setUser({ role, ...admin });
+        return true;
+      }
+      return false;
+    }
+
+    if (role === "Mentor") {
+      const mentor = mentorsData.find(
+        (m) => m.email === email && m.password === password
+      );
+      if (mentor) {
+        setUser({ role, ...mentor });
+        return true;
+      }
+      return false;
+    }
+
+    return false;
   };
 
   const logout = () => setUser(null);

@@ -26,6 +26,7 @@ function Login() {
           Login
         </h2>
 
+        {/* Role Selector */}
         <label className="block mb-4">
           <span className="text-gray-700">Select Role</span>
           <select
@@ -33,33 +34,32 @@ function Login() {
             value={role}
             onChange={(e) => setRole(e.target.value)}
           >
-            <option>Admin</option>
-            <option>Mentor</option>
-            <option>Student</option>
+            <option value="Admin">Admin</option>
+            <option value="Mentor">Mentor</option>
+            <option value="Student">Student</option>
           </select>
         </label>
 
-        {role === "Student" && (
-          <>
-            <input
-              type="email"
-              placeholder="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full mb-3 p-2 border rounded"
-            />
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="w-full mb-3 p-2 border rounded"
-            />
-          </>
-        )}
+        {/* Email + Password Inputs (for all roles) */}
+        <input
+          type="email"
+          placeholder={`${role} Email`}
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          className="w-full mb-3 p-2 border rounded"
+        />
+        <input
+          type="password"
+          placeholder={`${role} Password`}
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          className="w-full mb-3 p-2 border rounded"
+        />
 
+        {/* Error Message */}
         {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
 
+        {/* Login Button */}
         <button
           onClick={handleLogin}
           className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700"
@@ -69,6 +69,11 @@ function Login() {
       </div>
     </div>
   );
+}
+
+export default Login;
+
+
 // return (
 //         <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
 //             <div className="bg-white p-8 rounded-xl shadow-lg w-full max-w-md">
@@ -96,7 +101,3 @@ function Login() {
 //             </div>
 //         </div>
 //     );
-}
-
-
-export default Login;
