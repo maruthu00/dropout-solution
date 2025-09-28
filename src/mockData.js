@@ -30,8 +30,8 @@
 export const studentsData = [
   {
     id: 1,
-    name: "Alice",
-    email: "alice@student.com",
+    name: "Lucky",
+    email: "lucky@student.com",
     password: "1234",
     attendance: [90, 85, 80, 70],
     scores: [88, 76, 65, 55],
@@ -57,8 +57,8 @@ export const studentsData = [
   },
   {
     id: 4,
-    name: "Omar",
-    email: "omar@student.com",
+    name: "Om",
+    email: "om@student.com",
     password: "1234",
     attendance: [85, 90, 88, 92],
     scores: [80, 85, 82, 88],
@@ -75,8 +75,8 @@ export const studentsData = [
   },
   {
     id: 6,
-    name: "Liam",
-    email: "liam@student.com",
+    name: "Pallavi",
+    email: "pallavi@student.com",
     password: "1234",
     attendance: [75, 68, 72, 65],
     scores: [70, 65, 68, 62],
@@ -84,8 +84,8 @@ export const studentsData = [
   },
   {
     id: 7,
-    name: "Sofia",
-    email: "sofia@student.com",
+    name: "Samrudhi",
+    email: "samrudhi@student.com",
     password: "1234",
     attendance: [98, 99, 97, 100],
     scores: [95, 96, 94, 98],
@@ -93,8 +93,8 @@ export const studentsData = [
   },
   {
     id: 8,
-    name: "Chen",
-    email: "chen@student.com",
+    name: "Shivam",
+    email: "shivam@student.com",
     password: "1234",
     attendance: [82, 80, 85, 88],
     scores: [78, 75, 81, 84],
@@ -111,8 +111,8 @@ export const studentsData = [
   },
   {
     id: 10,
-    name: "Ben",
-    email: "ben@student.com",
+    name: "Unnati",
+    email: "unnati@student.com",
     password: "1234",
     attendance: [91, 88, 93, 90],
     scores: [90, 85, 92, 88],
@@ -120,8 +120,8 @@ export const studentsData = [
   },
   {
     id: 11,
-    name: "Chloe",
-    email: "chloe@student.com",
+    name: "Radha",
+    email: "radha@student.com",
     password: "1234",
     attendance: [89, 94, 92, 87],
     scores: [86, 91, 89, 84],
@@ -129,8 +129,8 @@ export const studentsData = [
   },
   {
     id: 12,
-    name: "David",
-    email: "david@student.com",
+    name: "Krishna",
+    email: "krishna@student.com",
     password: "1234",
     attendance: [78, 81, 79, 83],
     scores: [75, 79, 77, 81],
@@ -156,13 +156,13 @@ export const adminsData = [
 export const mentorsData = [
   {
     id: 1,
-    name: "John Mentor",
-    email: "john@mentor.com",
+    name: "Riya Dhawan",
+    email: "riya@mentor.com",
     password: "mentor123",
   },
   {
     id: 2,
-    name: "Priya Mentor",
+    name: "Priya Rai",
     email: "priya@mentor.com",
     password: "mentor456",
   },
