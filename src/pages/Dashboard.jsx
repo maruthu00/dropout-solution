@@ -43,12 +43,18 @@ function Dashboard() {
         <>
           <div className="bg-white p-6 rounded-lg shadow mb-6">
             <h3 className="text-xl font-bold mb-2">My Profile</h3>
-            <p><b>Name:</b> {user.student.name}</p>
-            <p><b>Email:</b> {user.student.email}</p>
-            <p><b>Fees Status:</b> {user.student.feesPaid ? "✅ Paid" : "❌ Pending"}</p>
+            <p>
+              <b>Name:</b> {user.name}
+            </p>
+            <p>
+              <b>Email:</b> {user.email}
+            </p>
+            <p>
+              <b>Fees Status:</b> {user.feesPaid ? "✅ Paid" : "❌ Pending"}
+            </p>
           </div>
-          <RiskChart student={user.student} />
-          <CounselingScheduler role="Student" student={user.student} />
+          <RiskChart student={user} />
+          <CounselingScheduler role="Student" student={user} />
         </>
       )}
 
@@ -61,5 +67,6 @@ function Dashboard() {
 }
 
 export default Dashboard;
-Dashboard.jsx
+Dashboard.jsx;
 
+12;
