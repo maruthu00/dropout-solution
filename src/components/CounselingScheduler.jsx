@@ -1,60 +1,102 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
 function CounselingScheduler({ role, student }) {
-  const [selectedSlot, setSelectedSlot] = useState(null);
-  const [booked, setBooked] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
 
-  const slots = ["Mon 10:00 AM", "Tue 11:00 AM", "Wed 3:00 PM", "Thu 1:00 PM"];
-
-  if (role === "Student" && student.risk !== "High") {
-    return (
-      <div className="bg-white p-6 rounded-lg shadow mt-6">
-        <h3 className="text-lg font-bold mb-4">Counseling Scheduler</h3>
-        <p className="text-gray-500">You are not flagged as High Risk. 🎉</p>
-      </div>
-    );
+  if (role !== "Student" || !student) {
+    return null; // Only for students
   }
 
-  const handleBooking = (slot) => {
-    setSelectedSlot(slot);
-    setBooked(true);
+  // --- Calculate averages ---
+  const avgAttendance =
+    student.attendance.reduce((a, b) => a + b, 0) / student.attendance.length;
+  const avgScore =
+    student.scores.reduce((a, b) => a + b, 0) / student.scores.length;
+
+  // --- Risk detection ---
+  const isHighRisk = avgAttendance < 60 || avgScore < 60 || !student.feesPaid;
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert(
+      `Counseling scheduled on ${date} at ${time} for ${student.name}`
+    );
+    setIsModalOpen(false);
+    setDate("");
+    setTime("");
   };
 
   return (
     <div className="bg-white p-6 rounded-lg shadow mt-6">
-      <h3 className="text-lg font-bold mb-4">Counseling Scheduler</h3>
+      <h3 className="text-xl font-bold mb-2">Counseling Scheduler</h3>
 
-      {role === "Student" && student.risk === "High" && !booked && (
-        <>
-          <p className="mb-3 text-gray-600">
-            Choose a slot to book a counseling session:
+      {isHighRisk ? (
+        <div className="text-red-600 font-semibold">
+          ⚠️ You are flagged as <b>High Risk</b>.
+          <p className="mt-2">
+            Please schedule a counseling session with your mentor immediately.
           </p>
-          <div className="grid md:grid-cols-2 gap-3">
-            {slots.map((slot, i) => (
-              <button
-                key={i}
-                onClick={() => handleBooking(slot)}
-                className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
-              >
-                {slot}
-              </button>
-            ))}
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700"
+          >
+            Book Counseling
+          </button>
+        </div>
+      ) : (
+        <p className="text-green-600">
+          🎉 You are not flagged as High Risk. Keep up the good work!
+        </p>
+      )}
+
+      {/* --- Modal --- */}
+      {isModalOpen && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-96">
+            <h3 className="text-xl font-bold mb-4 text-blue-600">
+              Book Counseling Session
+            </h3>
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-gray-700">Select Date</label>
+                <input
+                  type="date"
+                  value={date}
+                  onChange={(e) => setDate(e.target.value)}
+                  required
+                  className="w-full p-2 border rounded"
+                />
+              </div>
+              <div>
+                <label className="block text-gray-700">Select Time</label>
+                <input
+                  type="time"
+                  value={time}
+                  onChange={(e) => setTime(e.target.value)}
+                  required
+                  className="w-full p-2 border rounded"
+                />
+              </div>
+              <div className="flex justify-end space-x-3">
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)}
+                  className="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400"
+                >
+                  Cancel
+                </button>
+                <button
+                  type="submit"
+                  className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"
+                >
+                  Confirm
+                </button>
+              </div>
+            </form>
           </div>
-        </>
-      )}
-
-      {role === "Student" && booked && (
-        <p className="text-green-600 font-semibold">
-          ✅ Session booked for <span className="font-bold">{selectedSlot}</span>
-        </p>
-      )}
-
-      {role === "Mentor" && (
-        <p className="text-gray-600">
-          {booked
-            ? `📌 A student booked a session at ${selectedSlot}`
-            : "No bookings yet"}
-        </p>
+        </div>
       )}
     </div>
   );
